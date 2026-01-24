@@ -1,9 +1,16 @@
 <template>
     <div class="container mt-5">
+
+            <input type="number" v-model="diem" />
+            <p v-if="diem >= 5">pass</p>
+            <p v-else>fail</p>
+            <button class="btn btn-info">kiểm tra</button>
+        
+        
         <h1 class="text-center">Kiến thức sức khỏe cộng đồng</h1>
         <div class="row">
-            <div class="col-sm-4">
-                <div class="card">
+            <div class="col-sm-4 d-flex">
+                <div class="card ">
                     <img :src="items[0].image" alt="../assets/sesameoil_300x300.jpg" />
                     <div class="card-body">
                         <h3 class="card-title">{{ items[0].title }}</h3>
@@ -12,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 d-flex">
                 <div class="card">
                     <img :src="items[1].image" alt="../assets/corevalue.jpg" />
                     <div class="card-body">
@@ -22,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 d-flex">
                 <div class="card">
                     <img :src="items[2].image" alt="../assets/orange_300x300.jpg" />
                     <div class="card-body">
@@ -37,7 +44,6 @@
 </template>
 
 <script setup>
-// Import hình ảnh từ thư mục assets
 import img1 from '../assets/sesameoil_300x300.jpg';
 import img2 from '../assets/corevalue.jpg';
 import img3 from '../assets/orange_300x300.jpg';
@@ -55,3 +61,13 @@ const items = ([
     },
 ]);
 </script>
+
+<style>
+    .card-text {
+        text-align: justify;
+    }
+
+.card-body {
+    text-align: left;
+}
+</style>
