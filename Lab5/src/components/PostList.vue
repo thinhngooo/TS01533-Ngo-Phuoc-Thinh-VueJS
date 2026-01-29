@@ -24,15 +24,15 @@ export default {
 
 <style>
 .post {
-    padding: 20px;
+    padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ddd;
+    border: 5px solid #ddd;
     border-radius: 10px;
 
 
 }
 
 .highlighted {
-    border: 2px solid lightgray;
+    border: 2px solid rgb(106, 0, 236);
 }
 </style>

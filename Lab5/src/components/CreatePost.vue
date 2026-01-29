@@ -39,9 +39,9 @@ function submitPost() {
 input,
 textarea {
     display: block;
-    width: 100%;
+    width: 175%;
     margin: 10px 0;
-    padding: 10px;
+    padding: 15px;
     border-radius: 5px;
     border: 1px solid #ddd;
 
