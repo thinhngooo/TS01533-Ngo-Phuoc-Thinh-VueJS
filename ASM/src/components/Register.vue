@@ -11,21 +11,46 @@ const confirmPassword = ref('');
 const errorMessage = ref('');
 
 const handleRegister = async () => {
+  errorMessage.value = '';
+  
+  if (!name.value || !email.value || !password.value || !confirmPassword.value) {
+    errorMessage.value = 'Vui lòng điền đầy đủ thông tin';
+    return;
+  }
+  
   if (password.value !== confirmPassword.value) {
     errorMessage.value = 'Mật khẩu không khớp';
     return;
   }
   
+  if (password.value.length < 6) {
+    errorMessage.value = 'Mật khẩu phải có ít nhất 6 ký tự';
+    return;
+  }
+  
   try {
-    await axios.post('http://localhost:3000/users', {
+    // Thay đổi từ http://localhost:3000 thành /api
+    const checkEmail = await axios.get(`/api/users?email=${email.value}`);
+    
+    if (checkEmail.data.length > 0) {
+      errorMessage.value = 'Email đã được sử dụng';
+      return;
+    }
+    
+    const newUser = {
       name: name.value,
       email: email.value,
       password: password.value
-    });
+    };
+    
+    const response = await axios.post('/api/users', newUser);
+    
     alert('Đăng ký thành công!');
     router.push('/login');
+    
   } catch (error) {
-    errorMessage.value = 'Đăng ký thất bại';
+    console.error('Lỗi:', error);
+    errorMessage.value = 'Đăng ký thất bại: ' + (error.response?.data || error.message);
   }
 };
 </script>
@@ -45,28 +70,28 @@ const handleRegister = async () => {
             <form @submit.prevent="handleRegister">
               <div class="mb-3">
                 <label class="form-label">Họ tên</label>
-                <input v-model="name" type="text" class="form-control" required>
+                <input v-model="name" type="text" class="form-control">
               </div>
               
               <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input v-model="email" type="email" class="form-control" required>
+                <input v-model="email" type="email" class="form-control">
               </div>
               
               <div class="mb-3">
                 <label class="form-label">Mật khẩu</label>
-                <input v-model="password" type="password" class="form-control" required>
+                <input v-model="password" type="password" class="form-control">
               </div>
               
               <div class="mb-3">
                 <label class="form-label">Xác nhận mật khẩu</label>
-                <input v-model="confirmPassword" type="password" class="form-control" required>
+                <input v-model="confirmPassword" type="password" class="form-control">
               </div>
               
               <button type="submit" class="btn btn-primary w-100">Đăng ký</button>
             </form>
             
-            <p class="text-center mt-3">
+            <p class="text-center mt-3 mb-0">
               Đã có tài khoản? <router-link to="/login">Đăng nhập</router-link>
             </p>
           </div>

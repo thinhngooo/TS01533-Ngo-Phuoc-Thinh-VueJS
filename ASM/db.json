@@ -1,5 +1,61 @@
 {
-  "users": [],
-  "posts": [],
-  "comments": []
+  "users": [
+    {
+      "id": "5848",
+      "name": "thịnh",
+      "email": "ngothinh15111991@gmail.com",
+      "password": "123456"
+    }
+  ],
+  "posts": [
+    {
+      "id": "2c87",
+      "title": " ChatGPT của OpenAI đạt 100 triệu người dùng chỉ sau 2 tháng ra mắt",
+      "content": "Vào tháng 11/2022, OpenAI đã ra mắt ChatGPT - một chatbot AI có khả năng trò chuyện tự nhiên và trả lời câu hỏi một cách thông minh. Chỉ sau 2 tháng, vào tháng 1/2023, ChatGPT đã đạt 100 triệu người dùng hoạt động hàng tháng, trở thành ứng dụng tiêu dùng tăng trưởng nhanh nhất trong lịch sử.\n\nTrước đó, TikTok mất 9 tháng để đạt cột mốc này, còn Instagram phải mất 2.5 năm. Sự bùng nổ của ChatGPT đã khơi dậy cuộc đua AI toàn cầu, với Google, Microsoft, và nhiều công ty công nghệ lớn khác đổ xô đầu tư vào lĩnh vực trí tuệ nhân tạo.\n\nChatGPT có khả năng viết email, code phần mềm, sáng tác thơ, giải toán, và thực hiện nhiều tác vụ khác. Công nghệ này dựa trên mô hình ngôn ngữ lớn GPT-3.5 (sau này được nâng cấp lên GPT-4), được huấn luyện trên hàng tỷ văn bản từ internet.\n\n",
+      "author": "thịnh",
+      "userId": "5848",
+      "createdAt": "2026-02-01T02:45:53.679Z"
+    },
+    {
+      "id": "c22b",
+      "title": "Lionel Messi giành Quả bóng vàng FIFA lần thứ 8 trong sự nghiệp",
+      "content": "Ngày 30/10/2023, Lionel Messi đã được vinh danh với danh hiệu Quả bóng vàng FIFA lần thứ 8, củng cố vị thế huyền thoại của mình trong làng bóng đá thế giới. Đây là lần đầu tiên một cầu thủ đạt được thành tích này.\n\nMessi giành giải thưởng cao quý nhất dành cho cá nhân sau khi dẫn dắt đội tuyển Argentina vô địch World Cup 2022 tại Qatar - danh hiệu duy nhất còn thiếu trong sự nghiệp lẫy lừng của anh. Tại World Cup, Messi ghi 7 bàn thắng và có 3 pha kiến tạo, được bình chọn là Cầu thủ xuất sắc nhất giải.\n\nỞ tuổi 36, Messi hiện đang thi đấu cho Inter Miami tại giải MLS (Mỹ) sau khi rời Paris Saint-Germain hồi tháng 6/2023. Anh đã giúp Inter Miami giành danh hiệu Leagues Cup đầu tiên trong lịch sử câu lạc bộ.",
+      "author": "thịnh",
+      "userId": "5848",
+      "createdAt": "2026-02-01T02:46:35.392Z"
+    },
+    {
+      "id": "46ae",
+      "title": "Kính viễn vọng James Webb phát hiện thiên hà xa nhất từng được quan sát",
+      "content": "Tháng 12/2022, kính viễn vọng không gian James Webb của NASA đã phát hiện JADES-GS-z13-0 - thiên hà xa nhất và cổ xưa nhất từng được con người quan sát, cách Trái Đất khoảng 13,5 tỷ năm ánh sáng.\n\nThiên hà này hình thành chỉ khoảng 320 triệu năm sau Vụ nổ Big Bang, khi vũ trụ chỉ mới 2% tuổi hiện tại. Phát hiện này giúp các nhà khoa học hiểu rõ hơn về giai đoạn đầu của vũ trụ và quá trình hình thành thiên hà đầu tiên.\n\nJames Webb, với giá trị 10 tỷ USD, là kính viễn vọng không gian mạnh nhất từng được xây dựng. Được phóng lên quỹ đạo vào tháng 12/2021, nó có khả năng quan sát trong dải hồng ngoại, cho phép nhìn xuyên qua bụi vũ trụ và quan sát những vật thể cực xa.\n\nCác nhà khoa học kỳ vọng James Webb sẽ tiếp tục mang lại nhiều phát hiện đột phá về nguồn gốc vũ trụ, sự hình thành sao và hành tinh, cũng như tìm kiếm dấu hiệu sự sống ngoài Trái Đất.\n\n",
+      "author": "thịnh",
+      "userId": "5848",
+      "createdAt": "2026-02-01T02:46:50.003Z"
+    },
+    {
+      "id": "c0aa",
+      "title": "Elon Musk trở thành người đầu tiên có tài sản vượt 400 tỷ USD",
+      "content": "Tháng 12/2024, tài sản ròng của tỷ phú Elon Musk đã vượt mốc 400 tỷ USD, lần đầu tiên trong lịch sử có một cá nhân đạt được con số này. Theo Bloomberg Billionaires Index, tài sản của Musk tăng mạnh nhờ giá cổ phiếu Tesla và SpaceX tăng vượt bậc.\n\nCổ phiếu Tesla tăng hơn 70% trong năm 2024, đưa giá trị công ty lên hơn 1.200 tỷ USD. Trong khi đó, SpaceX - công ty hàng không vũ trụ tư nhân của Musk - được định giá khoảng 180 tỷ USD sau vòng gọi vốn mới nhất.\n\nMusk cũng sở hữu các công ty khác như X (Twitter cũ), Neuralink (công nghệ cấy ghép não), The Boring Company (đào hầm), và xAI (trí tuệ nhân tạo). Tuy nhiên, việc mua lại Twitter với giá 44 tỷ USD vào năm 2022 đã gây nhiều tranh cãi do nền tảng này liên tục thua lỗ.\n\nTrước Musk, Jeff Bezos của Amazon từng nắm giữ kỷ lục với tài sản đạt 211 tỷ USD vào năm 2021.\n\n",
+      "author": "thịnh",
+      "userId": "5848",
+      "createdAt": "2026-02-01T02:47:03.703Z"
+    },
+    {
+      "id": "c06d",
+      "title": "WHO công bố kết thúc tình trạng khẩn cấp toàn cầu về COVID-19",
+      "content": "Ngày 5/5/2023, Tổ chức Y tế Thế giới (WHO) đã chính thức tuyên bố kết thúc tình trạng khẩn cấp y tế toàn cầu về đại dịch COVID-19, sau hơn 3 năm kể từ khi dịch bệnh bùng phát.\n\nTổng giám đốc WHO Tedros Adhanom Ghebreyesus cho biết quyết định được đưa ra dựa trên xu hướng giảm số ca tử vong, giảm áp lực lên hệ thống y tế, và tỷ lệ dân số có miễn dịch cao thông qua vaccine và nhiễm bệnh tự nhiên.\n\nTuy nhiên, ông Tedros cũng cảnh báo COVID-19 vẫn là mối đe dọa sức khỏe thường trực và các quốc gia cần duy trì hệ thống giám sát, xét nghiệm và điều trị. WHO ước tính COVID-19 đã gây ra ít nhất 7 triệu ca tử vong trên toàn cầu, mặc dù con số thực tế có thể cao hơn gấp 2-3 lần.\n\nĐại dịch COVID-19 bắt đầu từ Vũ Hán, Trung Quốc vào cuối năm 2019 và nhanh chóng lan rộng toàn cầu, khiến WHO tuyên bố tình trạng khẩn cấp vào ngày 30/1/2020.",
+      "author": "thịnh",
+      "userId": "5848",
+      "createdAt": "2026-02-01T02:47:22.767Z"
+    }
+  ],
+  "comments": [
+    {
+      "id": "6ab7",
+      "postId": null,
+      "author": "thịnh",
+      "content": "ádadad",
+      "createdAt": "2026-02-01T02:43:14.440Z"
+    }
+  ]
 }
