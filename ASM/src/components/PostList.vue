@@ -37,11 +37,11 @@ onMounted(() => {
 <template>
   <div class="container mt-4">
     <h2 class="mb-4">Danh sách bài viết</h2>
-    
+
     <div v-if="posts.length === 0" class="alert alert-info">
       Chưa có bài viết nào
     </div>
-    
+
     <div class="row">
       <div v-for="post in posts" :key="post.id" class="col-md-6 mb-4">
         <div class="card h-100">
@@ -54,9 +54,8 @@ onMounted(() => {
             <router-link :to="`/posts/${post.id}`" class="btn btn-sm btn-info me-2">
               Xem chi tiết
             </router-link>
-            <button v-if="currentUser && currentUser.id === post.userId" 
-                    @click="deletePost(post.id)" 
-                    class="btn btn-sm btn-danger">
+            <button v-if="currentUser && currentUser.id === post.userId" @click="deletePost(post.id)"
+              class="btn btn-sm btn-danger">
               Xóa
             </button>
           </div>

@@ -40,16 +40,16 @@ const fetchMyPosts = async () => {
 const updateProfile = async () => {
   errorMessage.value = '';
   successMessage.value = '';
-  
+
   try {
     const updatedData = {
       ...currentUser.value,
       name: name.value,
       email: email.value
     };
-    
+
     await axios.put(`http://localhost:3000/users/${currentUser.value.id}`, updatedData);
-    
+
     localStorage.setItem('user', JSON.stringify(updatedData));
     currentUser.value = updatedData;
     successMessage.value = 'Cập nhật thông tin thành công!';
@@ -61,37 +61,37 @@ const updateProfile = async () => {
 const changePassword = async () => {
   errorMessage.value = '';
   successMessage.value = '';
-  
+
   if (currentPassword.value !== currentUser.value.password) {
     errorMessage.value = 'Mật khẩu hiện tại không đúng!';
     return;
   }
-  
+
   if (newPassword.value !== confirmPassword.value) {
     errorMessage.value = 'Mật khẩu mới không khớp!';
     return;
   }
-  
+
   if (newPassword.value.length < 6) {
     errorMessage.value = 'Mật khẩu mới phải có ít nhất 6 ký tự!';
     return;
   }
-  
+
   try {
     const updatedData = {
       ...currentUser.value,
       password: newPassword.value
     };
-    
+
     await axios.put(`http://localhost:3000/users/${currentUser.value.id}`, updatedData);
-    
+
     localStorage.setItem('user', JSON.stringify(updatedData));
     currentUser.value = updatedData;
-    
+
     currentPassword.value = '';
     newPassword.value = '';
     confirmPassword.value = '';
-    
+
     successMessage.value = 'Đổi mật khẩu thành công!';
   } catch (error) {
     errorMessage.value = 'Đổi mật khẩu thất bại!';
@@ -135,11 +135,11 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    
+
     <!-- Nội dung Profile khi đã đăng nhập -->
     <div v-else>
       <h2 class="mb-4">Quản lý tài khoản</h2>
-      
+
       <div class="row">
         <!-- Thông tin cá nhân -->
         <div class="col-md-6 mb-4">
@@ -154,24 +154,24 @@ onMounted(() => {
               <div v-if="successMessage" class="alert alert-success">
                 {{ successMessage }}
               </div>
-              
+
               <form @submit.prevent="updateProfile">
                 <div class="mb-3">
                   <label class="form-label">Họ tên</label>
                   <input v-model="name" type="text" class="form-control" required>
                 </div>
-                
+
                 <div class="mb-3">
                   <label class="form-label">Email</label>
                   <input v-model="email" type="email" class="form-control" required>
                 </div>
-                
+
                 <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
               </form>
             </div>
           </div>
         </div>
-        
+
         <!-- Đổi mật khẩu -->
         <div class="col-md-6 mb-4">
           <div class="card">
@@ -184,24 +184,24 @@ onMounted(() => {
                   <label class="form-label">Mật khẩu hiện tại</label>
                   <input v-model="currentPassword" type="password" class="form-control" required>
                 </div>
-                
+
                 <div class="mb-3">
                   <label class="form-label">Mật khẩu mới</label>
                   <input v-model="newPassword" type="password" class="form-control" required>
                 </div>
-                
+
                 <div class="mb-3">
                   <label class="form-label">Xác nhận mật khẩu mới</label>
                   <input v-model="confirmPassword" type="password" class="form-control" required>
                 </div>
-                
+
                 <button type="submit" class="btn btn-warning">Đổi mật khẩu</button>
               </form>
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- Bài viết của tôi -->
       <div class="row">
         <div class="col-12">
@@ -213,7 +213,7 @@ onMounted(() => {
               <div v-if="myPosts.length === 0" class="alert alert-light">
                 Bạn chưa có bài viết nào
               </div>
-              
+
               <div class="table-responsive" v-else>
                 <table class="table table-hover">
                   <thead>
