@@ -1,47 +1,62 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { posts, savePosts } from '../data/mockData';
+import { useRoute, useRouter } from 'vue-router';
+import { posts, updatePost } from '../data/mockData';
 
+const route = useRoute();
 const router = useRouter();
 const title = ref('');
 const content = ref('');
 const image = ref('');
 const currentUser = ref(null);
+const post = ref(null);
 
-const handleSubmit = () => {
-  if (!currentUser.value) {
-    alert('Vui lòng đăng nhập để đăng bài!');
-    router.push('/login');
+const loadPost = () => {
+  const postId = parseInt(route.params.id);
+  post.value = posts.find(p => p.id === postId);
+  
+  if (!post.value) {
+    alert('Không tìm thấy bài viết');
+    router.push('/');
     return;
   }
   
+  if (!currentUser.value || post.value.userId !== currentUser.value.id) {
+    alert('Bạn không có quyền sửa bài viết này!');
+    router.push('/');
+    return;
+  }
+  
+  title.value = post.value.title;
+  content.value = post.value.content;
+  image.value = post.value.image || '';
+};
+
+const handleSubmit = () => {
   if (!title.value || !content.value) {
     alert('Vui lòng điền đầy đủ thông tin');
     return;
   }
   
-  const newPost = {
-    id: posts.length + 1,
+  const success = updatePost(post.value.id, {
     title: title.value,
     content: content.value,
-    image: image.value || '',
-    author: currentUser.value.name,
-    userId: currentUser.value.id,
-    createdAt: new Date().toISOString()
-  };
+    image: image.value
+  });
   
-  posts.push(newPost);
-  savePosts();
-  
-  alert('Đăng bài thành công!');
-  router.push('/');
+  if (success) {
+    alert('Cập nhật bài viết thành công!');
+    router.push(`/posts/${post.value.id}`);
+  } else {
+    alert('Có lỗi xảy ra!');
+  }
 };
 
 onMounted(() => {
   const user = localStorage.getItem('user');
   if (user) {
     currentUser.value = JSON.parse(user);
+    loadPost();
   } else {
     router.push('/login');
   }
@@ -49,14 +64,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- Template giữ nguyên như cũ -->
   <div class="container mt-4 mb-5">
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card shadow">
           <div class="card-body">
             <h2 class="card-title mb-4">
-              <i class="bi bi-pencil-square"></i> Tạo bài viết mới
+              <i class="bi bi-pencil"></i> Sửa bài viết
             </h2>
             
             <form @submit.prevent="handleSubmit">
@@ -106,10 +120,10 @@ onMounted(() => {
               </div>
               
               <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-primary">
-                  <i class="bi bi-check-circle"></i> Đăng bài
+                <button type="submit" class="btn btn-success">
+                  <i class="bi bi-check-circle"></i> Lưu thay đổi
                 </button>
-                <router-link to="/" class="btn btn-secondary">
+                <router-link :to="`/posts/${post?.id}`" class="btn btn-secondary">
                   <i class="bi bi-x-circle"></i> Hủy
                 </router-link>
               </div>
@@ -128,7 +142,7 @@ onMounted(() => {
 
 .card-title {
   color: #333;
-  border-bottom: 2px solid #dc3545;
+  border-bottom: 2px solid #28a745;
   padding-bottom: 10px;
 }
 </style>
