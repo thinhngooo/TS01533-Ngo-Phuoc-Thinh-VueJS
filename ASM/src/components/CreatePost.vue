@@ -49,7 +49,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- Template giữ nguyên như cũ -->
   <div class="container mt-4 mb-5">
     <div class="row justify-content-center">
       <div class="col-md-8">

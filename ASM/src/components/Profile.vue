@@ -6,15 +6,12 @@ import { users, posts } from '../data/mockData';
 const router = useRouter();
 const currentUser = ref(null);
 
+// Thông tin cá nhân
 const name = ref('');
 const email = ref('');
 const updateMessage = ref('');
 
-const currentPassword = ref('');
-const newPassword = ref('');
-const confirmPassword = ref('');
-const passwordMessage = ref('');
-
+// Bài viết của user
 const userPosts = computed(() => {
   if (!currentUser.value) return [];
   return posts.filter(p => p.userId === currentUser.value.id);
@@ -40,11 +37,13 @@ const updateProfile = () => {
     return;
   }
   
+  // Tìm user trong mảng và cập nhật
   const userIndex = users.findIndex(u => u.id === currentUser.value.id);
   if (userIndex !== -1) {
     users[userIndex].name = name.value;
     users[userIndex].email = email.value;
     
+    // Cập nhật localStorage
     const updatedUser = {
       ...currentUser.value,
       name: name.value,
@@ -53,55 +52,12 @@ const updateProfile = () => {
     localStorage.setItem('user', JSON.stringify(updatedUser));
     currentUser.value = updatedUser;
     
+    // Trigger event để cập nhật navbar
+    window.dispatchEvent(new Event('user-login'));
+    
     updateMessage.value = 'Cập nhật thông tin thành công!';
   } else {
     updateMessage.value = 'Không tìm thấy user!';
-  }
-};
-
-const changePassword = () => {
-  passwordMessage.value = '';
-  
-  if (!currentPassword.value || !newPassword.value || !confirmPassword.value) {
-    passwordMessage.value = 'Vui lòng điền đầy đủ thông tin';
-    return;
-  }
-  
-  if (currentPassword.value !== currentUser.value.password) {
-    passwordMessage.value = 'Mật khẩu hiện tại không đúng!';
-    return;
-  }
-  
-  if (newPassword.value !== confirmPassword.value) {
-    passwordMessage.value = 'Mật khẩu mới không khớp!';
-    return;
-  }
-  
-  if (newPassword.value.length < 6) {
-    passwordMessage.value = 'Mật khẩu phải có ít nhất 6 ký tự';
-    return;
-  }
-  
-  const userIndex = users.findIndex(u => u.id === currentUser.value.id);
-  if (userIndex !== -1) {
-    users[userIndex].password = newPassword.value;
-    
-
-    const updatedUser = {
-      ...currentUser.value,
-      password: newPassword.value
-    };
-    localStorage.setItem('user', JSON.stringify(updatedUser));
-    currentUser.value = updatedUser;
-    
-    passwordMessage.value = 'Đổi mật khẩu thành công!';
-    
-   
-    currentPassword.value = '';
-    newPassword.value = '';
-    confirmPassword.value = '';
-  } else {
-    passwordMessage.value = 'Không tìm thấy user!';
   }
 };
 
@@ -116,7 +72,7 @@ onMounted(() => {
     
     <div class="row">
       <!-- Thông tin cá nhân -->
-      <div class="col-md-6 mb-4">
+      <div class="col-md-12 mb-4">
         <div class="card">
           <div class="card-header bg-primary text-white">
             <h5 class="mb-0">Thông tin cá nhân</h5>
@@ -138,40 +94,6 @@ onMounted(() => {
               </div>
               
               <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Đổi mật khẩu -->
-      <div class="col-md-6 mb-4">
-        <div class="card">
-          <div class="card-header bg-warning text-dark">
-            <h5 class="mb-0">Đổi mật khẩu</h5>
-          </div>
-          <div class="card-body">
-            <div v-if="passwordMessage" class="alert" :class="passwordMessage.includes('thành công') ? 'alert-success' : 'alert-danger'">
-              {{ passwordMessage }}
-            </div>
-            
-            <form @submit.prevent="changePassword">
-              <div class="mb-3">
-                <label class="form-label">Mật khẩu hiện tại</label>
-                <input v-model="currentPassword" type="password" class="form-control" required>
-              </div>
-              
-              <div class="mb-3">
-                <label class="form-label">Mật khẩu mới</label>
-                <input v-model="newPassword" type="password" class="form-control" required>
-                <small class="text-muted">Tối thiểu 6 ký tự</small>
-              </div>
-              
-              <div class="mb-3">
-                <label class="form-label">Xác nhận mật khẩu mới</label>
-                <input v-model="confirmPassword" type="password" class="form-control" required>
-              </div>
-              
-              <button type="submit" class="btn btn-warning">Đổi mật khẩu</button>
             </form>
           </div>
         </div>

@@ -48,23 +48,20 @@ const defaultComments = [
   }
 ];
 
-// Load từ localStorage hoặc dùng dữ liệu mặc định
 const loadData = (key, defaultData) => {
   const saved = localStorage.getItem(key);
   if (saved) {
     return JSON.parse(saved);
   }
-  // Lưu dữ liệu mặc định vào localStorage lần đầu
+
   localStorage.setItem(key, JSON.stringify(defaultData));
   return defaultData;
 };
 
-// Export dữ liệu
 export const users = loadData('users', defaultUsers);
 export const posts = loadData('posts', defaultPosts);
 export const comments = loadData('comments', defaultComments);
 
-// Hàm lưu dữ liệu vào localStorage
 export const savePosts = () => {
   localStorage.setItem('posts', JSON.stringify(posts));
 };
@@ -87,7 +84,6 @@ export const deletePost = (postId) => {
   return false;
 };
 
-// Hàm cập nhật bài viết
 export const updatePost = (postId, updatedData) => {
   const index = posts.findIndex(p => p.id === postId);
   if (index !== -1) {

@@ -24,7 +24,6 @@
 
 <script setup>
 
-// Import hình ảnh từ thư mục assets 
 import { ref } from 'vue';
 import img1 from '../assets/images/corevalue.jpg';
 import img2 from '../assets/images/orange_300x300.jpg';

@@ -43,6 +43,7 @@ function resetForm() {
         dob: ''
     }
 }
+
 </script>
 
 <template>
@@ -55,11 +56,13 @@ function resetForm() {
                         <label for="name">Họ tên: </label>
                         <input type="text" class="form-control" v-model="student.name" id="name" required />
                     </div>
-
                     <div class="mb-3">
                         <label for="score">Điểm: </label>
-                        <input type="number" max="10" min="0" class="form-control" v-model="student.score" id="score" required />
+                        <input type="number" max="10" min="0"  v-model.number="student.score" id="score" required />
+        
                     </div>
+
+                    
 
                     <div class="mb-3">
                         <label for="dob">Ngày sinh:</label>
@@ -79,6 +82,7 @@ function resetForm() {
                         <tr>
                             <th>Họ và tên</th>
                             <th>Điểm</th>
+                            <th>Xếp loại</th>
                             <th>Ngày sinh</th>
                             <th></th>
                             <th></th>
@@ -88,6 +92,16 @@ function resetForm() {
                         <tr v-for="(stu, index) in students" :key="index">
                             <td>{{ stu.name }}</td>
                             <td>{{ stu.score }}</td>
+                            <td><div>
+                               <p v-if="stu.score < 0 || stu.score > 10" style="color: red">
+            Vui lòng nhập điểm từ 0 đến 10!
+        </p>
+        <p v-else-if="stu.score < 5.0"> Yếu</p>
+        <p v-else-if="stu.score < 6.5"> Trung bình</p>
+        <p v-else-if="stu.score < 8.0"> Khá</p>
+        <p v-else-if="stu.score < 9.0"> Giỏi</p>
+        <p v-else>Xuất sắc</p>
+    </div></td>
                             <td>{{ stu.dob }}</td>
                             <td>
                                 <button class="btn btn-warning" @click="editStudent(index)">Sửa</button>

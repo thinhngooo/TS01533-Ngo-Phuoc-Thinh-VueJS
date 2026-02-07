@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="d-flex">
         <h2>Danh sach bai viet</h2>
         <div v-for="(post, index) in posts" :key="index" :class="{ 'highlighted': post.title.length > 20 }"
             :style="{ backgroundColor: post.backgroundColor, color: post.textColor }" class="post">
@@ -9,6 +9,7 @@
         </div>
     </div>
 </template>
+
 
 <script>
 export default {
@@ -22,14 +23,13 @@ export default {
 };
 </script>
 
+
 <style>
 .post {
     padding: 10px;
     margin: 10px 0;
     border: 5px solid #ddd;
     border-radius: 10px;
-
-
 }
 
 .highlighted {

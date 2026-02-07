@@ -1,7 +1,7 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { posts, comments, saveComments, deletePost } from '../data/mockData';
+import { posts, comments, saveComments } from '../data/mockData';
 
 const route = useRoute();
 const router = useRouter();
@@ -9,10 +9,6 @@ const post = ref(null);
 const postComments = ref([]);
 const newComment = ref('');
 const currentUser = ref(null);
-
-const isOwner = computed(() => {
-  return currentUser.value && post.value && currentUser.value.id === post.value.userId;
-});
 
 const loadPost = () => {
   const postId = parseInt(route.params.id);
@@ -52,20 +48,6 @@ const addComment = () => {
   loadComments();
 };
 
-const handleDelete = () => {
-  if (!confirm('Bạn có chắc muốn xóa bài viết này?')) {
-    return;
-  }
-  
-  const success = deletePost(post.value.id);
-  if (success) {
-    alert('Xóa bài viết thành công!');
-    router.push('/');
-  } else {
-    alert('Có lỗi xảy ra!');
-  }
-};
-
 onMounted(() => {
   const user = localStorage.getItem('user');
   if (user) {
@@ -78,21 +60,9 @@ onMounted(() => {
 
 <template>
   <div class="container mt-4 mb-5">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <router-link to="/" class="btn btn-secondary">
-        <i class="bi bi-arrow-left"></i> Quay lại trang chủ
-      </router-link>
-      
-      <!-- Nút Sửa và Xóa (chỉ hiện cho chủ bài viết) -->
-      <div v-if="isOwner" class="d-flex gap-2">
-        <router-link :to="`/posts/${post.id}/edit`" class="btn btn-warning">
-          <i class="bi bi-pencil"></i> Sửa
-        </router-link>
-        <button @click="handleDelete" class="btn btn-danger">
-          <i class="bi bi-trash"></i> Xóa
-        </button>
-      </div>
-    </div>
+    <router-link to="/" class="btn btn-secondary mb-3">
+      <i class="bi bi-arrow-left"></i> Quay lại trang chủ
+    </router-link>
     
     <div v-if="post" class="card mb-4 shadow">
       <img v-if="post.image" :src="post.image" class="card-img-top" alt="" style="max-height: 500px; object-fit: cover;">
