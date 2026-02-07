@@ -4,7 +4,8 @@ const defaultUsers = [
     id: 1,
     name: 'thinh',
     email: 'ngothinh15111991@gmail.com',
-    password: '123456'
+    password: '123456',
+    avatar: ''
   }
 ];
 
@@ -45,6 +46,7 @@ const defaultComments = [
     author: 'thinh',
     content: 'Bài viết rất hay và bổ ích!',
     createdAt: '2026-01-16T08:00:00.000Z'
+
   }
 ];
 
