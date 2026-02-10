@@ -1,3 +1,4 @@
+
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { posts } from '../data/mockData';
@@ -52,7 +53,7 @@ onMounted(() => {
                 <router-link 
                   :to="`/posts/${featuredPost.id}`" 
                   class="btn btn-primary btn-lg">
-                  Đọc tiếp <i class="bi bi-arrow-right"></i>
+                  Xem chi tiết <i class="bi bi-arrow-right"></i>
                 </router-link>
               </div>
             </div>
